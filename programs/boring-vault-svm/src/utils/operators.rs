@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-use solana_nostd_sha256::hashv;
+use solana_program::hash::{hash};
 
 #[derive(AnchorSerialize, AnchorDeserialize, Clone, Debug)]
 #[non_exhaustive]
@@ -48,6 +48,6 @@ impl Operators {
             }
         }
 
-        Ok(hashv(&[&hash_data]))
+        Ok(hash(&hash_data).to_bytes())
     }
 }
