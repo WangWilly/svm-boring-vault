@@ -63,8 +63,8 @@ for i in {1..30}; do
         
         # Check wallet balance and exit if insufficient
         WALLET_BALANCE=$(solana balance | awk '{print $1}')
-        # Use bc for floating point comparison
-        if [ "$(echo "$WALLET_BALANCE < 99.9" | bc)" -eq 1 ]; then
+        # Use awk for floating point comparison (avoid bc dependency)
+        if awk "BEGIN {exit !($WALLET_BALANCE < 99.9)}"; then
             echo "❌ Wallet balance is too low after airdrop ($WALLET_BALANCE SOL). Exiting."
             pkill -9 solana-test-validator || true
             exit 1
