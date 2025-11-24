@@ -1,12 +1,18 @@
 [package]
 name = "endpoint"
 version = "0.1.0"
-description = "Layer Zero Endpoint Mock Program"
+description = "A mock implementation of the LayerZero Endpoint program for local testing and development. Simulates message sending and receiving without actual cross-chain communication."
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
 name = "endpoint"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = [
+    'cfg(feature, values("custom-heap", "custom-panic", "anchor-debug"))',
+    'cfg(target_os, values("solana"))'
+] }
 
 [features]
 default = []
@@ -19,4 +25,3 @@ idl-build = ["anchor-lang/idl-build"]
 
 [dependencies]
 anchor-lang = { workspace = true }
-

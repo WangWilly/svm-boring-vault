@@ -1,16 +1,16 @@
 [toolchain]
-anchor_version = "0.31.1"
+anchor_version = "0.32.1"
 
 [features]
 resolution = true
 skip-lint = false
 
 [programs.localnet]
-boring_onchain_queue = "4yfE2VJQmxmcnUhrb8vdz7H8w313EZ3eJh5DbANBgtmd"
-boring_vault_svm = "5ZRnXG4GsUMLaN7w2DtJV1cgLgcXHmuHCmJ2MxoorWCE"
-endpoint = "5hkWNgGVXnwofEjDNtY5u3WUCvUUxXES5wyG4V3aEo1F"
-layer_zero_share_mover = "CU9XermEoiawu8eYwSyXBHgMESRwWEycDU9jjk9MHSgN"
-state_assert = "72mmDHDfvH1hGgo4thWjhpQRASkebRW1fjFMRzE5zimG"
+boring_onchain_queue = "G1e7FfxiBovJMqmu5LtGvRsnAAzHHjYiaQdtpRyax1Y2"
+boring_vault_svm = "ES38ztU5RYeoRheN24MJrJExrqzZYmtLz2dby7Es1Zxp"
+endpoint = "G4JKZ4AZ6BcfFCZcitqhEoZdMDgTKzfHeBqd9RLqoJAq"
+layer_zero_share_mover = "ETiijauRzxSQ2UdyiTzQKP4pH2vi8w4wanDfV1PKmHiy"
+state_assert = "FJUvcmwAqdzdw4KhNjT7U7PZPi1o54HZaNYAXyNZ32eZ"
 
 [registry]
 url = "https://api.apr.dev"

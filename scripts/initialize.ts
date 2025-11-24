@@ -57,6 +57,10 @@ async function main() {
       queueProgram.programId
     );
 
+    const programKeypair = anchor.web3.Keypair.fromSecretKey(
+      new Uint8Array(JSON.parse(require('fs').readFileSync('target/deploy/boring_onchain_queue-keypair.json', 'utf8')))
+    );
+
     const initQueueTx = await queueProgram.methods
       .initialize(authority.publicKey)
       .accounts({
@@ -65,6 +69,7 @@ async function main() {
         config: queueConfig,
         systemProgram: anchor.web3.SystemProgram.programId,
       })
+      .signers([programKeypair])
       .rpc();
     console.log("Queue initialization successful:", initQueueTx);
   } catch (error) {
