@@ -11,7 +11,7 @@ Get up and running with Boring Vault on localnet in under 2 minutes!
 ## One-Command Setup
 
 ```bash
-./scripts/dev-localnet.sh
+./scripts/localnet-dev.sh
 ```
 
 That's it! This single command will:
@@ -59,20 +59,20 @@ solana balance
 
 ### Stop When Done
 ```bash
-./scripts/stop-localnet.sh
+./scripts/localnet-stop.sh
 ```
 
 ## Daily Workflow
 
 ```bash
 # Morning: Start fresh
-./scripts/dev-localnet.sh
+./scripts/localnet-dev.sh
 
 # During development: Quick redeploy
-./scripts/deploy-localnet.sh
+./scripts/localnet-deploy.sh
 
 # Evening: Clean up
-./scripts/stop-localnet.sh
+./scripts/localnet-stop.sh
 ```
 
 ## Troubleshooting
@@ -80,7 +80,7 @@ solana balance
 **Validator won't start?**
 ```bash
 pkill -9 solana-test-validator
-./scripts/start-localnet.sh
+./scripts/localnet-start.sh
 ```
 
 **Build fails?**

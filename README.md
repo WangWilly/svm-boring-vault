@@ -18,7 +18,7 @@ Get up and running in less than a minute!
 We provide a unified script to start the local validator, build programs, deploy them, and run tests automatically.
 
 ```bash
-./scripts/dev-localnet.sh
+./scripts/localnet-dev.sh
 ```
 
 This script will:

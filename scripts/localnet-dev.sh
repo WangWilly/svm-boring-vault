@@ -1,5 +1,5 @@
 #!/bin/bash
-# dev-localnet.sh - All-in-one development script
+# localnet-dev.sh - All-in-one development script
 # This script starts localnet, deploys, and tests in one command
 
 set -euo pipefail
@@ -33,7 +33,7 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         --help)
-            echo "Usage: ./scripts/dev-localnet.sh [OPTIONS]"
+            echo "Usage: ./scripts/localnet-dev.sh [OPTIONS]"
             echo ""
             echo "Options:"
            echo "  --skip-tests     Deploy but don't run tests"
@@ -58,12 +58,12 @@ done
 # Step 1: Start localnet
 echo "Step 1/4: Starting Localnet..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-"$SCRIPT_DIR/start-localnet.sh"
+"$SCRIPT_DIR/localnet-start.sh"
 
 echo ""
 echo "Step 2/4: Building and Deploying..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-"$SCRIPT_DIR/deploy-localnet.sh"
+"$SCRIPT_DIR/localnet-deploy.sh"
 
 if [ "$DEPLOY_ONLY" = true ]; then
     echo ""
@@ -76,7 +76,7 @@ if [ "$SKIP_TESTS" = false ]; then
     echo ""
     echo "Step 3/4: Testing Deployment..."
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    "$SCRIPT_DIR/test-localnet.sh"
+    "$SCRIPT_DIR/localnet-test.sh"
 fi
 
 echo ""

@@ -1,5 +1,5 @@
 #!/bin/bash
-# deploy-localnet.sh - Build and deploy programs to localnet
+# localnet-deploy.sh - Build and deploy programs to localnet
 # This script builds all Anchor programs and deploys them to the local validator
 
 set -euo pipefail
@@ -17,7 +17,7 @@ fi
 # Check validator is running
 if ! solana cluster-version &>/dev/null; then
     echo "❌ Localnet validator is not running!"
-    echo "💡 Run './scripts/start-localnet.sh' first"
+    echo "💡 Run './scripts/localnet-start.sh' first"
     exit 1
 fi
 
@@ -61,4 +61,4 @@ solana program show --programs | grep -E "(boring|endpoint|state_assert)" || ech
 
 echo ""
 echo "✅ Deployment complete!"
-echo "💡 Next: Run './scripts/test-localnet.sh' to test the deployment"
+echo "💡 Next: Run './scripts/localnet-test.sh' to test the deployment"

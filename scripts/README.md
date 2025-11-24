@@ -6,7 +6,7 @@ This directory contains scripts to easily develop and test the Boring Vault on a
 
 **Run everything in one command:**
 ```bash
-./scripts/dev-localnet.sh
+./scripts/localnet-dev.sh
 ```
 
 This will:
@@ -17,11 +17,11 @@ This will:
 
 ## Individual Scripts
 
-### 🚀 start-localnet.sh
+### 🚀 localnet-start.sh
 Starts a Solana test validator for local development.
 
 ```bash
-./scripts/start-localnet.sh
+./scripts/localnet-start.sh
 ```
 
 **What it does:**
@@ -38,11 +38,11 @@ Starts a Solana test validator for local development.
 
 ---
 
-### 🏗️ deploy-localnet.sh
+### 🏗️ localnet-deploy.sh
 Builds and deploys all Anchor programs to localnet.
 
 ```bash
-./scripts/deploy-localnet.sh
+./scripts/localnet-deploy.sh
 ```
 
 **What it does:**
@@ -60,11 +60,11 @@ Builds and deploys all Anchor programs to localnet.
 
 ---
 
-### 🧪 test-localnet.sh
+### 🧪 localnet-test.sh
 Initializes programs and runs tests.
 
 ```bash
-./scripts/test-localnet.sh
+./scripts/localnet-test.sh
 ```
 
 **What it does:**
@@ -76,14 +76,14 @@ Initializes programs and runs tests.
 
 ---
 
-### 🎯 dev-localnet.sh
+### 🎯 localnet-dev.sh
 All-in-one development script (recommended).
 
 ```bash
-./scripts/dev-localnet.sh              # Full workflow
-./scripts/dev-localnet.sh --skip-tests  # Deploy without testing
-./scripts/dev-localnet.sh --deploy-only # Only build and deploy
-./scripts/dev-localnet.sh --help        # Show options
+./scripts/localnet-dev.sh              # Full workflow
+./scripts/localnet-dev.sh --skip-tests  # Deploy without testing
+./scripts/localnet-dev.sh --deploy-only # Only build and deploy
+./scripts/localnet-dev.sh --help        # Show options
 ```
 
 **Options:**
@@ -93,11 +93,11 @@ All-in-one development script (recommended).
 
 ---
 
-### 🛑 stop-localnet.sh
+### 🛑 localnet-stop.sh
 Stops the running localnet validator.
 
 ```bash
-./scripts/stop-localnet.sh
+./scripts/localnet-stop.sh
 ```
 
 **What it does:**
@@ -115,27 +115,27 @@ Stops the running localnet validator.
 yarn install
 
 # 2. Start localnet and deploy
-./scripts/dev-localnet.sh
+./scripts/localnet-dev.sh
 ```
 
 ### Daily Development
 ```bash
 # Start validator (if not already running)
-./scripts/start-localnet.sh
+./scripts/localnet-start.sh
 
 # Make code changes, then redeploy
-./scripts/deploy-localnet.sh
+./scripts/localnet-deploy.sh
 
 # Run tests
-./scripts/test-localnet.sh
+./scripts/localnet-test.sh
 
 # Or do all at once
-./scripts/dev-localnet.sh
+./scripts/localnet-dev.sh
 ```
 
 ### When Finished
 ```bash
-./scripts/stop-localnet.sh
+./scripts/localnet-stop.sh
 ```
 
 ---
@@ -175,7 +175,7 @@ pkill -9 solana-test-validator
 
 # Clean ledger and restart
 rm -rf test-ledger
-./scripts/start-localnet.sh
+./scripts/localnet-start.sh
 ```
 
 ### Build fails
@@ -206,7 +206,7 @@ solana config get
 ```bash
 # Rebuild and redeploy
 anchor clean
-./scripts/deploy-localnet.sh
+./scripts/localnet-deploy.sh
 
 # Run tests with more output
 RUST_LOG=debug anchor test --skip-local-validator
@@ -233,7 +233,7 @@ wallet = "~/.config/solana/id.json"
 ## Tips
 
 1. **Keep validator running** - You don't need to restart it between deployments
-2. **Fast iteration** - Use `./scripts/deploy-localnet.sh` for quick redeployments
+2. **Fast iteration** - Use `./scripts/localnet-deploy.sh` for quick redeployments
 3. **Watch logs** - Run `solana logs` in a separate terminal to see transactions
 4. **Fresh state** - Restart validator with `--reset` flag (already in scripts) for clean state
 5. **Save test data** - Validator state persists in `test-ledger/` between runs (unless using `--reset`)

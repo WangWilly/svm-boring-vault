@@ -1,5 +1,5 @@
 #!/bin/bash
-# stop-localnet.sh - Stop the localnet validator
+# localnet-stop.sh - Stop the localnet validator
 # Safely stops the running Solana test validator
 
 set -euo pipefail
@@ -23,4 +23,4 @@ else
 fi
 
 echo ""
-echo "💡 To start again: ./scripts/start-localnet.sh"
+echo "💡 To start again: ./scripts/localnet-start.sh"

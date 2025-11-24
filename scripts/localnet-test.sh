@@ -1,5 +1,5 @@
 #!/bin/bash
-# test-localnet.sh - Run tests against localnet deployment
+# localnet-test.sh - Run tests against localnet deployment
 # This script initializes programs and runs basic functionality tests
 
 set -euo pipefail

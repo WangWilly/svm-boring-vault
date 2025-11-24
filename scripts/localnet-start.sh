@@ -1,5 +1,5 @@
 #!/bin/bash
-# start-localnet.sh - Start Solana localnet validator
+# localnet-start.sh - Start Solana localnet validator
 # This script starts a local validator for development and testing
 
 set -euo pipefail
@@ -55,7 +55,20 @@ for i in {1..30}; do
         echo ""
         echo "💰 Airdropping 100 SOL to your wallet..."
         WALLET_ADDRESS=$(solana address)
-        solana airdrop 100 "$WALLET_ADDRESS" || echo "Airdrop may have failed, but continuing..."
+        if ! solana airdrop 100 "$WALLET_ADDRESS"; then
+            echo "❌ Airdrop failed! Exiting."
+            pkill -9 solana-test-validator || true
+            exit 1
+        fi
+        
+        # Check wallet balance and exit if insufficient
+        WALLET_BALANCE=$(solana balance | awk '{print $1}')
+        # Use bc for floating point comparison
+        if [ "$(echo "$WALLET_BALANCE < 99.9" | bc)" -eq 1 ]; then
+            echo "❌ Wallet balance is too low after airdrop ($WALLET_BALANCE SOL). Exiting."
+            pkill -9 solana-test-validator || true
+            exit 1
+        fi
         
         echo ""
         echo "💼 Your wallet balance:"
